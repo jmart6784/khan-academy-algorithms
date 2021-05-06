@@ -48,8 +48,9 @@ var primes = [
 ];
 
 // var result = doSearch(primes, 73);
-// console.log("Found prime at index " + result);
+// console.log("Binary search found prime at index " + result);
 
+// Selection sort
 var swap = function (array, firstIndex, secondIndex) {
   var temp = array[firstIndex];
   array[firstIndex] = array[secondIndex];
@@ -77,5 +78,23 @@ var selectionSort = function (array) {
 };
 
 var array = [22, 11, 99, 88, 9, 7, 42];
-selectionSort(array);
-console.log("Array after sorting:  " + array);
+// selectionSort(array);
+// console.log("Array after sorting:  " + array);
+
+// Insertion sort
+var insert = function (array, rightIndex, value) {
+  for (var j = rightIndex; j >= 0 && array[j] > value; j--) {
+    array[j + 1] = array[j];
+  }
+  array[j + 1] = value;
+};
+
+var insertionSort = function (array) {
+  for (var x = 1; x < array.length; x++) {
+    insert(array, x - 1, array[x]);
+  }
+};
+
+var array = [22, 11, 99, 88, 9, 7, 42];
+// insertionSort(array);
+// console.log("Array after insertion sort:  " + array);

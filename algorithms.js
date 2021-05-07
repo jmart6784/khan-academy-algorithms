@@ -112,6 +112,7 @@ var factorial = function (n) {
 
 // console.log("The value of 5! is " + factorial(5) + ".");
 
+// Recursive palindrome checker
 // Returns the first character of the string str
 var firstCharacter = function (str) {
   return str.slice(0, 1);
@@ -139,3 +140,36 @@ var isPalindrome = function (str) {
 };
 
 // console.log(`Is racecar a palindrome? ${isPalindrome("racecar")}`);
+
+// Recursive power function
+var isEven = function (n) {
+  return n % 2 === 0;
+};
+
+var isOdd = function (n) {
+  return !isEven(n);
+};
+
+var power = function (x, n) {
+  // base case
+  if (n === 0) {
+    return 1;
+  }
+  // recursive case: n is negative
+  if (n < 0) {
+    return 1 / power(x, -n);
+  }
+
+  // recursive case: n is odd
+  if (isOdd(n)) {
+    return power(x, n - 1) * x;
+  }
+  // recursive case: n is even
+  if (isEven(n)) {
+    var pow = power(x, n / 2);
+    return pow * pow;
+  }
+};
+
+console.log("3 to the 2 is " + power(3, 2));
+console.log("3 to the -1 is " + power(3, -1));

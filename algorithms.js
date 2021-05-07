@@ -98,3 +98,16 @@ var insertionSort = function (array) {
 var array = [22, 11, 99, 88, 9, 7, 42];
 // insertionSort(array);
 // console.log("Array after insertion sort:  " + array);
+
+// Recursive factorial
+var factorial = function (n) {
+  // base case:
+  if (n === 0) {
+    return 1;
+  }
+
+  // recursive case:
+  return n * factorial(n - 1);
+};
+
+// console.log("The value of 5! is " + factorial(5) + ".");

@@ -171,5 +171,54 @@ var power = function (x, n) {
   }
 };
 
-console.log("3 to the 2 is " + power(3, 2));
-console.log("3 to the -1 is " + power(3, -1));
+// console.log("3 to the 2 is " + power(3, 2));
+// console.log("3 to the -1 is " + power(3, -1));
+
+// Recursive merge sort algorithm
+var merge = function (array, p, q, r) {
+  var lowHalf = [];
+  var highHalf = [];
+
+  var k = p;
+  var i;
+  var j;
+  for (i = 0; k <= q; i++, k++) {
+    lowHalf[i] = array[k];
+  }
+  for (j = 0; k <= r; j++, k++) {
+    highHalf[j] = array[k];
+  }
+
+  k = p;
+  i = 0;
+  j = 0;
+
+  // Repeatedly add lowest element to array[k]
+  while (i < lowHalf.length && j < highHalf.length) {
+    if (lowHalf[i] < highHalf[j]) {
+      array[k] = lowHalf[i];
+      i += 1;
+    } else {
+      array[k] = highHalf[j];
+      j += 1;
+    }
+    k += 1;
+  }
+
+  // compare and copy the rest of the remaining values to array[k]
+  while (i < lowHalf.length) {
+    array[k] = lowHalf[i];
+    i += 1;
+    k += 1;
+  }
+
+  while (j < highHalf.length) {
+    array[k] = highHalf[j];
+    j += 1;
+    k += 1;
+  }
+};
+
+var array = [3, 7, 12, 14, 2, 6, 9, 11];
+merge(array, 0, Math.floor((0 + array.length - 1) / 2), array.length - 1);
+console.log("Array after merging: " + array);

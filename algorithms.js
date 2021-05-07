@@ -111,3 +111,31 @@ var factorial = function (n) {
 };
 
 // console.log("The value of 5! is " + factorial(5) + ".");
+
+// Returns the first character of the string str
+var firstCharacter = function (str) {
+  return str.slice(0, 1);
+};
+
+// Returns the last character of a string str
+var lastCharacter = function (str) {
+  return str.slice(-1);
+};
+
+// Returns the string that results from removing the first
+//  and last characters from str
+var middleCharacters = function (str) {
+  return str.slice(1, -1);
+};
+
+var isPalindrome = function (str) {
+  if (str.length <= 1) {
+    return true;
+  } else if (firstCharacter(str) !== lastCharacter(str)) {
+    return false;
+  }
+
+  return isPalindrome(middleCharacters(str));
+};
+
+// console.log(`Is racecar a palindrome? ${isPalindrome("racecar")}`);

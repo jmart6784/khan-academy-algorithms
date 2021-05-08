@@ -221,4 +221,35 @@ var merge = function (array, p, q, r) {
 
 var array = [3, 7, 12, 14, 2, 6, 9, 11];
 merge(array, 0, Math.floor((0 + array.length - 1) / 2), array.length - 1);
-console.log("Array after merging: " + array);
+// console.log("Array after merging: " + array);
+
+// Quick sort
+var swap = function (array, firstIndex, secondIndex) {
+  var temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
+};
+
+var partition = function (array, p, r) {
+  var q = p;
+  for (var j = p; j < r; j++) {
+    if (array[j] <= array[r]) {
+      swap(array, j, q);
+      q++;
+    }
+  }
+  swap(array, r, q);
+  return q;
+};
+
+var quickSort = function (array, p, r) {
+  if (p < r) {
+    var pivot = partition(array, p, r);
+    quickSort(array, p, pivot - 1);
+    quickSort(array, pivot + 1, r);
+  }
+};
+
+var array = [9, 7, 5, 11, 12, 2, 0, 14, 3, -1, 10, 6];
+// quickSort(array, 0, array.length - 1);
+// console.log("Array after sorting: " + array);

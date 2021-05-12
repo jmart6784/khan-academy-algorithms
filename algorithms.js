@@ -24,8 +24,8 @@ var primes = [
   73, 79, 83, 89, 97,
 ];
 
-// var result = doSearch(primes, 73);
-// console.log("Binary search found prime at index " + result);
+var result = doSearch(primes, 73);
+console.log("Binary search found prime at index " + result);
 
 // Selection sort
 var swap = function (array, firstIndex, secondIndex) {
@@ -55,8 +55,9 @@ var selectionSort = function (array) {
 };
 
 var array = [22, 11, 99, 88, 9, 7, 42];
-// selectionSort(array);
-// console.log("Array after sorting:  " + array);
+selectionSort(array);
+console.log("");
+console.log("Array after selection sort:  " + array);
 
 // Insertion sort
 var insert = function (array, rightIndex, value) {
@@ -73,8 +74,9 @@ var insertionSort = function (array) {
 };
 
 var array = [22, 11, 99, 88, 9, 7, 42];
-// insertionSort(array);
-// console.log("Array after insertion sort:  " + array);
+insertionSort(array);
+console.log("");
+console.log("Array after insertion sort:  " + array);
 
 // Recursive factorial
 var factorial = function (n) {
@@ -87,7 +89,8 @@ var factorial = function (n) {
   return n * factorial(n - 1);
 };
 
-// console.log("The value of 5! is " + factorial(5) + ".");
+console.log("");
+console.log("The value of factorial 5! is " + factorial(5));
 
 // Recursive palindrome checker
 // Returns the first character of the string str
@@ -116,7 +119,8 @@ var isPalindrome = function (str) {
   return isPalindrome(middleCharacters(str));
 };
 
-// console.log(`Is racecar a palindrome? ${isPalindrome("racecar")}`);
+console.log("");
+console.log(`Is racecar a palindrome? ${isPalindrome("racecar")}`);
 
 // Recursive power function
 var isEven = function (n) {
@@ -148,8 +152,9 @@ var power = function (x, n) {
   }
 };
 
-// console.log("3 to the 2 is " + power(3, 2));
-// console.log("3 to the -1 is " + power(3, -1));
+console.log("");
+console.log("3 to the power of 2 is " + power(3, 2));
+console.log("3 to the power of -1 is " + power(3, -1));
 
 // Recursive merge sort algorithm
 var merge = function (array, p, q, r) {
@@ -198,7 +203,8 @@ var merge = function (array, p, q, r) {
 
 var array = [3, 7, 12, 14, 2, 6, 9, 11];
 merge(array, 0, Math.floor((0 + array.length - 1) / 2), array.length - 1);
-// console.log("Array after merging: " + array);
+console.log("");
+console.log("Array after merge sort: " + array);
 
 // Quick sort
 var swap = function (array, firstIndex, secondIndex) {
@@ -228,8 +234,9 @@ var quickSort = function (array, p, r) {
 };
 
 var array = [9, 7, 5, 11, 12, 2, 0, 14, 3, -1, 10, 6];
-// quickSort(array, 0, array.length - 1);
-// console.log("Array after sorting: " + array);
+quickSort(array, 0, array.length - 1);
+console.log("");
+console.log("Array after quick sort: " + array);
 
 // A Queue object for queue-like functionality over JavaScript arrays.
 var Queue = function () {
@@ -293,6 +300,10 @@ var adjList = [
   [3, 5],
   [],
 ];
+console.log("");
+console.log(
+  "Graph vertices and their distance from source 3 and their predecessors"
+);
 var bfsInfo = doBFS(adjList, 3);
 for (var i = 0; i < adjList.length; i++) {
   console.log(

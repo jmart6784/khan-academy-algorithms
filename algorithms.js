@@ -20,31 +20,8 @@ var doSearch = function (array, targetValue) {
 };
 
 var primes = [
-  2,
-  3,
-  5,
-  7,
-  11,
-  13,
-  17,
-  19,
-  23,
-  29,
-  31,
-  37,
-  41,
-  43,
-  47,
-  53,
-  59,
-  61,
-  67,
-  71,
-  73,
-  79,
-  83,
-  89,
-  97,
+  2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+  73, 79, 83, 89, 97,
 ];
 
 // var result = doSearch(primes, 73);
@@ -253,3 +230,77 @@ var quickSort = function (array, p, r) {
 var array = [9, 7, 5, 11, 12, 2, 0, 14, 3, -1, 10, 6];
 // quickSort(array, 0, array.length - 1);
 // console.log("Array after sorting: " + array);
+
+// A Queue object for queue-like functionality over JavaScript arrays.
+var Queue = function () {
+  this.items = [];
+};
+Queue.prototype.enqueue = function (obj) {
+  this.items.push(obj);
+};
+Queue.prototype.dequeue = function () {
+  return this.items.shift();
+};
+Queue.prototype.isEmpty = function () {
+  return this.items.length === 0;
+};
+
+/*
+  Performs a breadth-first search on a graph
+  Takes adjacnecy list as the graph parameter
+  Takes source as a intger that is pointed to as the source vertex
+  returns array of objects describing each vertex, like [{distance: _, predecessor: _ }]
+ */
+var doBFS = function (graph, source) {
+  var bfsInfo = [];
+
+  for (var i = 0; i < graph.length; i++) {
+    bfsInfo[i] = {
+      distance: null,
+      predecessor: null,
+    };
+  }
+
+  bfsInfo[source].distance = 0;
+
+  var queue = new Queue();
+  queue.enqueue(source);
+
+  // Traverse the graph
+  while (!queue.isEmpty()) {
+    var u = queue.dequeue();
+    // loop through all nodes connected to var u
+    for (var v = 0; v < graph[u].length; v++) {
+      var x = graph[u][v];
+      if (bfsInfo[x].distance === null) {
+        bfsInfo[x].distance = bfsInfo[u].distance + 1;
+        bfsInfo[x].predecessor = u;
+        queue.enqueue(x);
+      }
+    }
+  }
+
+  return bfsInfo;
+};
+
+var adjList = [
+  [1],
+  [0, 4, 5],
+  [3, 4, 5],
+  [2, 6],
+  [1, 2],
+  [1, 2, 6],
+  [3, 5],
+  [],
+];
+var bfsInfo = doBFS(adjList, 3);
+for (var i = 0; i < adjList.length; i++) {
+  console.log(
+    "vertex " +
+      i +
+      ": distance = " +
+      bfsInfo[i].distance +
+      ", predecessor = " +
+      bfsInfo[i].predecessor
+  );
+}
